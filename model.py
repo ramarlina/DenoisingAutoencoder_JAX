@@ -2,6 +2,10 @@ import numpy as np
 import jax
 import jax.numpy as jnp
 
+class Identity():  
+    def __call__(self, X):
+        return X
+    
 def Activation(fname):
     if fname == "tanh":
         return jnp.tanh 
@@ -12,7 +16,7 @@ class AutoEncoder():
         self.activation = activation
         self.lr = lr  
 
-    def learn(self, X, loss, corruption=Identity()):
+    def learn(self, X, loss, noise=Identity()):
         e = loss(self.W, corruption(X), X, self.forward)  
         grad = loss.grad_fn(self.W, X, X, self.forward) 
         self.W -= self.lr * np.array(grad)
