@@ -1,8 +1,4 @@
 import numpy as np
-
-class Identity():  
-    def __call__(self, X):
-        return X
         
 class GaussianNoise():
     def __init__(self, mu, sd):
