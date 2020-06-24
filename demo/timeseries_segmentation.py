@@ -55,6 +55,8 @@ for i in prices:
     r.append(dA_model.decode(H))
     p.append(H)
 
+p = np.array(p)
+
 # mapping binary representations to unique values
 cid = p.dot(np.power(2, range(p.shape[1])).reshape(p.shape[1],))
 unique_vals = np.unique(cid.flatten())
