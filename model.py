@@ -17,7 +17,7 @@ class AutoEncoder():
         self.lr = lr  
 
     def learn(self, X, loss, noise=Identity()):
-        e = loss(self.W, corruption(X), X, self.forward)  
+        e = loss(self.W, noise(X), X, self.forward)  
         grad = loss.grad_fn(self.W, X, X, self.forward) 
         self.W -= self.lr * np.array(grad)
         return float(e) 
