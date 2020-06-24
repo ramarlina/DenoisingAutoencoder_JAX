@@ -50,9 +50,9 @@ for i in prices:
     i /= i.max()
     i  = 2 * (i - 0.5)
     T.append(i)
-    H = m.encode(i)
+    H = dA_model.encode(i)
     H = (H > np.random.uniform(-1,1,H.shape)).astype("f")
-    r.append(m.decode(H))
+    r.append(dA_model.decode(H))
     p.append(H)
 
 # mapping binary representations to unique values
